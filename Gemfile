@@ -67,6 +67,10 @@ gem 'rails_db'
 gem 'activeadmin', git: 'https://github.com/activeadmin/activeadmin'
 gem 'inherited_resources', git: 'https://github.com/activeadmin/inherited_resources'
 
+gem 'delayed_job_active_record'
+
+gem 'airbrake', '~> 5.7'
+
 group :development do
   gem 'capistrano', '~> 3.2.1'
   gem 'capistrano-secrets-yml', '~> 1.0.0'
