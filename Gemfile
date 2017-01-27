@@ -64,6 +64,9 @@ gem 'algoliasearch'
 gem 'social_shares'
 gem 'rails_db'
 
+gem 'activeadmin', git: 'https://github.com/activeadmin/activeadmin'
+gem 'inherited_resources', git: 'https://github.com/activeadmin/inherited_resources'
+
 group :development do
   gem 'capistrano', '~> 3.2.1'
   gem 'capistrano-secrets-yml', '~> 1.0.0'
