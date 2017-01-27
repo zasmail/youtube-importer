@@ -7,7 +7,7 @@ class AuthenticateFacebookService
     if Rails.env.development?
       callback = "http://localhost:3000/callback"
     else
-      callback = "http://localhost:3000/callback"
+      callback = "https://sheltered-citadel-56202.herokuapp.com/callback"
     end
 
 
