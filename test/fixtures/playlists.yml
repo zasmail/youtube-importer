@@ -1,0 +1,45 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  objectID: MyString
+  slug: MyString
+  name: MyString
+  description: MyString
+  published_at: 2017-01-26 12:12:40
+  popularity_score: 1
+  unpopular_score: 1
+  facebook_share_count: 1
+  facebook_comment_count: 1
+  is_english: false
+  google_share_count: 1
+  reddit_share_count: 1
+  linkedin_share_count: 1
+  pinterest_share_count: 1
+  total_share_count: 1
+  has_description: false
+  has_tags: false
+  like_count: 1
+  dislike_count: 1
+  image_url: MyString
+
+two:
+  objectID: MyString
+  slug: MyString
+  name: MyString
+  description: MyString
+  published_at: 2017-01-26 12:12:40
+  popularity_score: 1
+  unpopular_score: 1
+  facebook_share_count: 1
+  facebook_comment_count: 1
+  is_english: false
+  google_share_count: 1
+  reddit_share_count: 1
+  linkedin_share_count: 1
+  pinterest_share_count: 1
+  total_share_count: 1
+  has_description: false
+  has_tags: false
+  like_count: 1
+  dislike_count: 1
+  image_url: MyString

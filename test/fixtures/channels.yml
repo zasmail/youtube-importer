@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  talks: 
+  playlist: 
+  name: MyString
+  url: MyString
+
+two:
+  talks: 
+  playlist: 
+  name: MyString
+  url: MyString

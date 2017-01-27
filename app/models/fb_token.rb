@@ -1,0 +1,2 @@
+class FbToken < ApplicationRecord
+end

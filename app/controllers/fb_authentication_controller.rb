@@ -1,0 +1,13 @@
+class FbAuthenticationController < ApplicationController
+  def index
+  end
+  def create
+    if Rails.env.development?
+      callback = "http://localhost:3000/callback"
+    else
+      callback = "http://localhost:3000/callback"
+    end
+    @oauth = Koala::Facebook::OAuth.new(Rails.application.secrets.fb_app_id, Rails.application.secrets.fb_secret, callback)
+    redirect_to @oauth.url_for_oauth_code
+  end
+end
