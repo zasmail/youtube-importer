@@ -3,6 +3,6 @@ class ImportPlaylistsFromChannelJob < ApplicationJob
 
   def perform(*args)
     # Do something later
-    ImportPlaylistsFromChannel.new({ channel_id: channel.id }).run
+    ImportPlaylistsFromChannel.new({ channel_id: args[0].id }).run
   end
 end
