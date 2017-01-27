@@ -3,7 +3,7 @@ class GetDataController < ApplicationController
     Channel.all.each do |channel|
       ImportPlaylistsFromChannelJob.perform_later(channel)
       ImportTalksFromChannelJob.perform_later(channel)
-      UpdateSocialMediaNumbersJob.set(wait: 5.hours).perform_later()
+      UpdateSocialMediaNumbersJob.set(wait: 2.hours).perform_later()
     end
     redirect_to admin_dashboard_path
   end

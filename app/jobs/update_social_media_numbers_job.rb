@@ -3,7 +3,7 @@ class UpdateSocialMediaNumbersJob < ApplicationJob
 
   def perform(*args)
     Playlist.all.each do |playlist|
-      UpdateSocial.new({needs_update: talk}).run
+      UpdateSocial.new({needs_update: playlist}).run
     end
     Talk.all.each do |talk|
       UpdateSocial.new({needs_update: talk}).run
