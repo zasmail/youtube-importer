@@ -92,6 +92,9 @@ GEM
       sshkit (>= 1.2.0)
     childprocess (0.6.1)
       ffi (~> 1.0, >= 1.0.11)
+    climate_control (0.1.0)
+    cocaine (0.5.8)
+      climate_control (>= 0.0.3, < 1.0)
     codemirror-rails (5.16.0)
       railties (>= 3.0, < 6.0)
     coffee-rails (4.2.1)
@@ -110,6 +113,12 @@ GEM
       delayed_job (>= 3.0, < 5)
     domain_name (0.5.20161129)
       unf (>= 0.0.5, < 1.0.0)
+    ember-cli-rails (0.8.4)
+      cocaine (~> 0.5.8)
+      ember-cli-rails-assets (~> 0.6.2)
+      html_page (~> 0.1.0)
+      railties (>= 3.2)
+    ember-cli-rails-assets (0.6.2)
     erubis (2.7.0)
     execjs (2.7.0)
     faraday (0.11.0)
@@ -124,6 +133,7 @@ GEM
       actionpack (>= 4.1, < 5.1)
       activesupport (>= 4.1, < 5.1)
     highline (1.7.8)
+    html_page (0.1.0)
     http-cookie (1.0.3)
       domain_name (~> 0.5)
     httpclient (2.8.3)
@@ -311,6 +321,7 @@ DEPENDENCIES
   capistrano-secrets-yml (~> 1.0.0)
   coffee-rails (~> 4.2)
   delayed_job_active_record
+  ember-cli-rails
   inherited_resources!
   jbuilder (~> 2.5)
   jquery-rails
