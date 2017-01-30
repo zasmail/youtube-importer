@@ -68,7 +68,7 @@ class CreateTalkFromYoutube
       speakers = "TED"
     end
     if speakers.split("&").length > 1
-      speakers = speakers.split("&r")
+      speakers = speakers.split("&")
     else
       speakers = [speakers]
     end

@@ -1,0 +1,2 @@
+module AlgoliaHelper
+end

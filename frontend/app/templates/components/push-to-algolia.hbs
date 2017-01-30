@@ -2,28 +2,30 @@
   <div class="layout-column flex-xs flex-gt-xs-50">
     {{#paper-card as |card|}}
       {{#card.title as |title|}}
-        {{fa-icon "fa-youtube-play" class="fa youtube-icon"}}
+        <!-- {{fa-icon "fa-clock-o" class="fa youtube-icon"}} -->
+
+        <img class="algolia-logo" src="http://res.cloudinary.com/hilnmyskv/image/upload/logo-algolia-avatar.png">
         {{#title.text as |text|}}
-          {{#text.headline}}Grab data from Youtube{{/text.headline}}
-          {{#text.subhead}}Talks loaded: {{talks}}{{/text.subhead}}
-          {{#text.subhead}}Playlists loaded: {{playlists}}{{/text.subhead}}
+          {{#text.headline}}Push to Algolia{{/text.headline}}
+          <!-- {{#text.subhead}}Talks loaded: {{talks}}{{/text.subhead}}
+          {{#text.subhead}}Playlists loaded: {{playlists}}{{/text.subhead}} -->
         {{/title.text}}
       {{/card.title}}
       {{#card.actions}}
-        {{#paper-button onClick='reloadResults' disabled=authenticating}}
+        {{#paper-button onClick='pushData' disabled=pushing}}
           {{#if loadingResults}}
             {{paper-progress-circular}}
           {{else}}
-            Refresh results
+            Push Data
           {{/if}}
         {{/paper-button}}
-        {{#paper-button onClick='getData' disabled=running}}
+        <!-- {{#paper-button onClick='getData' disabled=running}}
           {{#if running}}
             {{paper-progress-circular}}
           {{else}}
             Get Data
           {{/if}}
-        {{/paper-button}}
+        {{/paper-button}} -->
       {{/card.actions}}
     {{/paper-card}}
   </div>

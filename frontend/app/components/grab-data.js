@@ -8,6 +8,7 @@ export default Ember.Component.extend({
   playlistsUpdated: null,
   loadingResults: true,
   status: null,
+  running: false,
 
   initialLoad: Ember.on('init', function(){
     this.loadResults();
@@ -19,8 +20,6 @@ export default Ember.Component.extend({
     store.createRecord('status', {}).save().then(function(results){
       this.set('talks', results.get('talks'));
       this.set('playlists', results.get('playlists'));
-      this.set('talksUpdated', results.get('socialt'));
-      this.set('playlistsUpdated', results.get('socialp'));
       this.set('loadingResults', false);
     }.bind(this), function(error){
       this.set('loadingResults', false);
@@ -36,7 +35,18 @@ export default Ember.Component.extend({
           this.loadResults();
         }
       }.bind(this), 500);
-    }
+    },
+
+    getData: function(){
+      var store = this.get('store');
+      this.set('running', true);
+      this.set('started', true);
+      store.createRecord('youtube', {}).save().then(function(results){
+        this.set('running', false);
+      }.bind(this), function( error ){
+        this.set('running', false);
+      }.bind(this));
+    },
   }
 
 });
