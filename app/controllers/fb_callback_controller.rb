@@ -12,6 +12,6 @@ class FbCallbackController < ApplicationController
       expires: Time.now + token_info['expires'].to_i
       )
     token.save
-    redirect_to admin_dashboard_path
+    redirect_to '/'
   end
 end

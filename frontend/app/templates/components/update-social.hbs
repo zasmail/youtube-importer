@@ -1,0 +1,32 @@
+<div class="layout-row layout-xs-column">
+  <div class="layout-column flex-xs flex-gt-xs-50">
+    {{#paper-card as |card|}}
+      {{#card.title as |title|}}
+        {{fa-icon "fa-youtube-play" class="fa youtube-icon"}}
+        {{#title.text as |text|}}
+          {{#text.headline}}Grab data from Youtube{{/text.headline}}
+          {{#text.subhead}}Playlists loaded: {{playlists}}{{/text.subhead}}
+          {{#text.subhead}}Playlists with social data: {{playlists}}{{/text.subhead}}
+          {{#text.subhead}}Talks loaded: {{talks}}{{/text.subhead}}
+          {{#text.subhead}}Talks with social data: {{talks}}{{/text.subhead}}
+        {{/title.text}}
+      {{/card.title}}
+      {{#card.actions}}
+        {{#paper-button onClick='reloadResults' disabled=authenticating}}
+          {{#if loadingResults}}
+            {{paper-progress-circular}}
+          {{else}}
+            Refresh results
+          {{/if}}
+        {{/paper-button}}
+        {{#paper-button onClick='reAuthenticate' disabled=authenticating}}
+          {{#if authenticating}}
+            {{paper-progress-circular}}
+          {{else}}
+            Get Data
+          {{/if}}
+        {{/paper-button}}
+      {{/card.actions}}
+    {{/paper-card}}
+  </div>
+</div>

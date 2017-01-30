@@ -1,0 +1,29 @@
+<div class="layout-row layout-xs-column">
+  <div class="layout-column flex-xs flex-gt-xs-50">
+    {{#paper-card as |card|}}
+      {{#card.title as |title|}}
+        {{fa-icon "fa-facebook-official" class="fa facebook-icon"}}
+        {{#title.text as |text|}}
+          {{#text.headline}}Facebook Authentication{{/text.headline}}
+          {{#if token.isValid}}
+            {{#text.subhead}}Token valid until:{{/text.subhead}}
+            {{#text.subhead}}<span class={{token.tokenClass}}>{{moment-format token.expires 'MM:HH A MM/DD/YYYY'}} UTC</span>{{/text.subhead}}
+          {{else}}
+            {{#text.subhead}}Token expired{{/text.subhead}}
+            {{#text.subhead}}<span class={{token.tokenClass}}>{{moment-format token.expires 'MM:HH A MM/DD/YYYY'}} UTC</span>{{/text.subhead}}
+          {{/if}}
+          {{#text.subhead}}{{if status status ""}}{{/text.subhead}}
+        {{/title.text}}
+      {{/card.title}}
+      {{#card.actions}}
+        {{#paper-button onClick='reAuthenticate' disabled=authenticating}}
+          {{#if authenticating}}
+            {{paper-progress-circular}}
+          {{else}}
+            Get a new token
+          {{/if}}
+        {{/paper-button}}
+      {{/card.actions}}
+    {{/paper-card}}
+  </div>
+</div>

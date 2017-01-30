@@ -1,0 +1,24 @@
+ @import 'ember-paper';
+ .nav-card{
+
+ }
+ .fa {
+   font-size: 50px;
+   margin-right: 16px;
+   &.facebook-icon{
+     color: #3b5998;
+   }
+   &.youtube-icon{
+     color: #cc181e;
+   }
+ }
+
+.token-good{
+  color: #009688;
+}
+.token-warning{
+  color: #FFEB3B;
+}
+.token-invalid{
+  color: #F44336;
+}

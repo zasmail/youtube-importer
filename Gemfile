@@ -76,6 +76,8 @@ gem 'airbrake', '~> 5.7'
 
 gem "ember-cli-rails"
 
+gem 'ember-rails'
+
 group :development do
   gem 'capistrano', '~> 3.2.1'
   gem 'capistrano-secrets-yml', '~> 1.0.0'
