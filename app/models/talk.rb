@@ -41,7 +41,6 @@ class Talk < ApplicationRecord
     # self.url =            "https://www.youtube.com/watch?v=#{id}",
     # self.is_english =     language.downcase == "english",
     # self.has_tags =       tags.length > 1
-    byebug
     self.save
     return self
   end

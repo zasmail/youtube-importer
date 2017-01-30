@@ -1,7 +1,6 @@
 class SocialsController < ApplicationController
   def create
     UpdateSocialMediaNumbersJob.perform_later
-
     render json: {data: {
        type: "youtubes",
        id: 999999999,

@@ -21,7 +21,14 @@
           {{#if running}}
             {{paper-progress-circular}}
           {{else}}
-            Get Data
+            Get Youtube Data
+          {{/if}}
+        {{/paper-button}}
+        {{#paper-button onClick='getSocial' disabled=runningSocial}}
+          {{#if runningSocial}}
+            {{paper-progress-circular}}
+          {{else}}
+            Get Social Data
           {{/if}}
         {{/paper-button}}
       {{/card.actions}}

@@ -47,6 +47,15 @@ export default Ember.Component.extend({
         this.set('running', false);
       }.bind(this));
     },
+    getSocial: function(){
+      var store = this.get('store');
+      this.set('runningSocial', true);
+      store.createRecord('social', {}).save().then(function(results){
+        this.set('runningSocial', false);
+      }.bind(this), function( error ){
+        this.set('runningSocial', false);
+      }.bind(this));
+    },
   }
 
 });
