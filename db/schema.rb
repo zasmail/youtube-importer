@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170127164409) do
+ActiveRecord::Schema.define(version: 20170130185321) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace"
@@ -93,7 +93,7 @@ ActiveRecord::Schema.define(version: 20170127164409) do
     t.string   "image_url"
     t.datetime "created_at",                                  null: false
     t.datetime "updated_at",                                  null: false
-    t.text     "tags",                   default: "--- []\n"
+    t.string   "tags",                   default: "--- []\n"
     t.integer  "talks_id"
     t.string   "channel_name"
     t.boolean  "hd_image"
@@ -129,10 +129,10 @@ ActiveRecord::Schema.define(version: 20170127164409) do
     t.boolean  "has_tags"
     t.datetime "created_at",                                  null: false
     t.datetime "updated_at",                                  null: false
-    t.text     "tags",                   default: "--- []\n"
-    t.text     "speakers",               default: "--- []\n"
+    t.string   "tags",                   default: "--- []\n"
+    t.string   "speakers",               default: "--- []\n"
     t.string   "image_url"
-    t.string   "hd_image"
+    t.boolean  "hd_image"
     t.string   "url"
     t.integer  "playlist_id"
     t.index ["object_id"], name: "index_talks_on_object_id"

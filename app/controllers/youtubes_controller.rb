@@ -1,8 +1,8 @@
 class YoutubesController < ApplicationController
   def create
     Channel.all.each do |channel|
-      ImportPlaylistsFromChannelJob.perform_later(channel)
       ImportTalksFromChannelJob.perform_later(channel)
+      ImportPlaylistsFromChannelJob.perform_later(channel)
     end
     render json: {data: {
        type: "youtubes",

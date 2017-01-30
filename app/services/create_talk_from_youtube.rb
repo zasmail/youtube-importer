@@ -29,15 +29,16 @@ class CreateTalkFromYoutube
       talk = Talk.create(
         object_id:        id,
         name:             title_and_speakers[:name],
-        speakers:         title_and_speakers[:speakers],
+        speakers:         title_and_speakers[:speakers].join(","),
         description:      talk.description,
         date:             talk.published_at,
         duration_range:   duration_range(talk),
-        tags:             tags,
+        tags:             tags.join(","),
         viewed_count:     talk.view_count,
         like_count:       talk.like_count,
         dislike_count:    talk.dislike_count,
-        image_url:        image,
+        image_url:        image[:image_url],
+        hd_image:         image[:hd],
         event_name:       "#{Date::MONTHNAMES[talk.published_at.month]} #{talk.published_at.year}",
         languages:        language,
         url:              "https://www.youtube.com/watch?v=#{id}",
@@ -102,23 +103,17 @@ class CreateTalkFromYoutube
   end
 
   def get_image(talk)
-    return talk.thumbnail_url("maxres")
-    # test_url = "https://i.ytimg.com/vi/#{talk.id}/maxresdefault.jpg"
-    # url = URI.parse(test_url)
-    # req = Net::HTTP.new(url.host, url.port)
-    # req.use_ssl = true
-    # res = req.request_head(url.path)
-    # if res.code == "200"
-    #   return {
-    #     image_url: test_url,
-    #     hd: true
-    #   }
-    # else
-    #   return {
-    #     image_url: talk.thumbnail_url("high"),
-    #     hd: false
-    #   }
-    # end
+    if talk.thumbnail_url("maxres").blank?
+      return {
+          image_url: talk.thumbnail_url("high"),
+          hd: false
+        }
+    else
+      return {
+          image_url: talk.thumbnail_url("maxres"),
+          hd: true
+        }
+    end
   end
 
   def get_language(talk)

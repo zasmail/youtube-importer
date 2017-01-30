@@ -30,20 +30,21 @@ class ImportPlaylistsFromChannel
     id = playlist.id
     talks = get_videos_in_playlist(playlist).map{|talk, key| talk }
     tags = playlist.tags
-    tags = tags.uniq!
+    tags = tags.uniq
     save_playlist = Playlist.create(
       object_id:        id,
       slug:             id,
       name:             playlist.title,
       description:      playlist.description,
       date:             playlist.published_at,
-      tags:             tags,
+      tags:             tags.join(","),
       url:              "http://www.youtube.com/playlist?list=#{id}",
       is_english:       get_language(playlist),
       has_description:  !playlist.description.blank?,
       has_tags:         !tags.blank?,
       talks:            talks
-    ).save
+    )
+    save_playlist.save()
   end
 
   def get_videos_in_playlist(playlist)

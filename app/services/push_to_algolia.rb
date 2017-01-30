@@ -98,8 +98,8 @@ class PushToAlgolia
       date: talk[:date],
       duration_range: talk[:duration_range],
       event_name: talk[:event_name],
-      speakers: talk[:speakers],
-      tags: talk[:tags],
+      speakers: talk[:speakers].split(','),
+      tags: talk[:tags].split(','),
       languages: talk[:languages],
       name: talk[:name],
       viewed_count: talk[:viewed_count],
@@ -122,11 +122,19 @@ class PushToAlgolia
   end
 
   def handle_playlist(playlist)
-    # if playlist[:talks].blank?
-    #   playlist[:talks] = []
-    # end
-    # talks_sorted = playlist[:talks].sort{ |a , b| a['viewed_count'] <=> b['viewed_count']}
-    # talk_tags = playlist.talks.map{|key, talk| return talk[:tags] }.uniq
+    if playlist.talks.blank?
+      playlist.talks= []
+    end
+    talks_sorted = playlist.talks.sort{ |a , b| a['viewed_count'] <=> b['viewed_count']}
+    talk_tags =[]
+    playlist.talks.each do |talk|
+      talk_tags << talk[:tags].split(',')
+    end
+    talk_tags = talk_tags.flatten.uniq
+    image = talks_sorted.detect{ |talk| talk[:hd_image] }[:image_url]
+    if image.blank?
+      image = talks_sorted.first[:image_url]
+    end
     playlist[:facebook_share_count] = 0 if playlist[:facebook_share_count].blank?
     playlist[:google_share_count] = 0 if playlist[:google_share_count].blank?
     playlist[:reddit_share_count] = 0 if playlist[:reddit_share_count].blank?
@@ -138,9 +146,9 @@ class PushToAlgolia
         slug: playlist[:slug],
         title: playlist[:name],
         description: playlist[:description],
-        # image_url: talks_sorted.first[:image_url],
-        tags: playlist[:tags],
-        # talk_tags: talk_tags,
+        image_url: image,
+        tags: playlist[:tags].split(','),
+        talk_tags: talk_tags,
         facebook_share_count: playlist[:facebook_share_count],
         google_share_count: playlist[:google_share_count],
         reddit_share_count: playlist[:reddit_share_count],
