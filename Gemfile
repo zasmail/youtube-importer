@@ -82,3 +82,5 @@ group :development do
   gem 'capistrano', '~> 3.2.1'
   gem 'capistrano-secrets-yml', '~> 1.0.0'
 end
+
+gem 'rails_12factor', group: [:staging, :production]
