@@ -78,6 +78,8 @@ gem "ember-cli-rails"
 
 gem 'ember-rails'
 
+gem 'redis-rails'
+
 group :development do
   gem 'capistrano', '~> 3.2.1'
   gem 'capistrano-secrets-yml', '~> 1.0.0'
