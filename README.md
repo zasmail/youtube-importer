@@ -35,6 +35,7 @@ Things to note:
 
 ### [update_images.rb](https://github.com/zasmail/youtube-importer/blob/master/app/services/update_images.rb)
 * Makes an external request to see if a given photo exists
+
 ### [update_social.rb](https://github.com/zasmail/youtube-importer/blob/master/app/services/update_social.rb)
 * Gathers data on talks and playlists from these external services:
   * facebook
