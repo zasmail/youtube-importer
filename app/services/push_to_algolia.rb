@@ -3,7 +3,7 @@ require 'koala'
 
 class PushToAlgolia
   def initialize
-    Algolia.init :application_id => "J7PGJUEF2D", :api_key => Rails.application.secrets.algolia_api_key
+    Algolia.init :application_id => Rails.application.secrets.algolia_app_id, :api_key => Rails.application.secrets.algolia_api_key
     @talks_index = Algolia::Index.new("talks")
     @talks_index.set_settings({
     	attributesToIndex: ['unordered(name)', 'speakers'],

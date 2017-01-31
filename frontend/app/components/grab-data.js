@@ -9,6 +9,8 @@ export default Ember.Component.extend({
   loadingResults: true,
   status: null,
   running: false,
+  runningPlaylist: false,
+  startedPlaylist: false,
 
   initialLoad: Ember.on('init', function(){
     this.loadResults();
@@ -45,6 +47,16 @@ export default Ember.Component.extend({
         this.set('running', false);
       }.bind(this), function( error ){
         this.set('running', false);
+      }.bind(this));
+    },
+    getPlaylists: function(){
+      var store = this.get('store');
+      this.set('runningPlaylist', true);
+      this.set('startedPlaylist', true);
+      store.createRecord('playlist', {}).save().then(function(results){
+        this.set('runningPlaylist', false);
+      }.bind(this), function( error ){
+        this.set('runningPlaylist', false);
       }.bind(this));
     },
     getSocial: function(){

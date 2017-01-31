@@ -1,16 +1,10 @@
-class YoutubesController < ApplicationController
+class PlaylistsController < ApplicationController
   def create
     Channel.all.each do |channel|
-      ImportTalksFromChannelJob.perform_later(channel)
+      ImportPlaylistsFromChannelJob.perform_later(channel)
     end
-    # saved_job = PerformJob.create({
-    #   type: "talks",
-    #   job_id: job.job_id,
-    #   completed: false,
-    #   })
-    # saved_job.save
     render json: {data: {
-       type: "youtubes",
+       type: "playlists",
        id: 999999999,
        attributes: {
         talks: Talk.all.length,

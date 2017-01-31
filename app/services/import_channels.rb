@@ -17,6 +17,27 @@ class ImportChannels
     end
   end
 
+  def stats
+    write_channel(@channel)
+    talks = 0
+    playlists = 0
+    playlist_talks = 0
+    bar = ProgressBar.new(@channel.subscribed_channels.count)
+    @channel.subscribed_channels.each do |channel|
+      bar.increment!
+      talks = talks + channel.videos.count
+      playlists = playlists + channel.playlists.count
+      pp channel.title
+      bar2 = ProgressBar.new(channel.playlists.count)
+      channel.playlists.each do |playlist|
+        bar2.increment!
+        playlist_talks = playlist_talks + playlist.playlist_items.count
+      end
+    end
+    byebug
+    pp "something"
+  end
+
   private
 
   def write_channel(channel)

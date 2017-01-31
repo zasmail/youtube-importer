@@ -21,7 +21,14 @@
           {{#if running}}
             {{paper-progress-circular}}
           {{else}}
-            Get Youtube Data
+            Get Youtube Talks
+          {{/if}}
+        {{/paper-button}}
+        {{#paper-button onClick='getPlaylists' disabled=runningPlaylist}}
+          {{#if runningPlaylist}}
+            {{paper-progress-circular}}
+          {{else}}
+            Get Youtube Playlists
           {{/if}}
         {{/paper-button}}
         {{#paper-button onClick='getSocial' disabled=runningSocial}}

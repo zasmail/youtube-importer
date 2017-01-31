@@ -15,7 +15,10 @@ class ImportPlaylistsFromChannel
   end
 
   def run
+    pp "Channel #{@channel.title}"
+    bar = ProgressBar.new(@channel.playlists.count)
     @channel.playlists.each do |playlist|
+      bar.increment!
       write_playlist(playlist)
     end
   end
@@ -31,32 +34,33 @@ class ImportPlaylistsFromChannel
     talks = get_videos_in_playlist(playlist).map{|talk, key| talk }
     tags = playlist.tags
     tags = tags.uniq
-    save_playlist = Playlist.create(
-      object_id:        id,
-      slug:             id,
-      name:             playlist.title,
-      description:      playlist.description,
-      date:             playlist.published_at,
-      tags:             tags.join(","),
-      url:              "http://www.youtube.com/playlist?list=#{id}",
-      is_english:       get_language(playlist),
-      has_description:  !playlist.description.blank?,
-      has_tags:         !tags.blank?,
-      talks:            talks
-    )
-    save_playlist.save()
+    old_playlist = Playlist.where(object_id: id)
+    if old_playlist.blank?
+      save_playlist = Playlist.create(
+        object_id:        id,
+        slug:             id,
+        name:             playlist.title,
+        description:      playlist.description,
+        date:             playlist.published_at,
+        tags:             tags.join(","),
+        url:              "http://www.youtube.com/playlist?list=#{id}",
+        is_english:       get_language(playlist),
+        has_description:  !playlist.description.blank?,
+        has_tags:         !tags.blank?,
+        talks:            talks
+      )
+      save_playlist.save()
+    end
   end
 
   def get_videos_in_playlist(playlist)
     talks = []
+    bar = ProgressBar.new(playlist.playlist_items.count)
     playlist.playlist_items.each do |playlist_item|
+      bar.increment!
+      talk = CreateTalkFromYoutube.new({ talk: playlist_item.video }).run
       talk = Talk.where(object_id: playlist_item.video.id)
-      if(talk.blank?)
-        talk = CreateTalkFromYoutube.new({ talk: playlist_item.video }).run
-        talks << talk
-      else
-        talks << talk
-      end
+      talks << talk
     end
     return talks
   end

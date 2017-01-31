@@ -16,5 +16,7 @@ Rails.application.routes.draw do
   resources :youtubes
   resources :algolia
   resources :socials
+  resources :talks
+  resources :playlists
 
 end

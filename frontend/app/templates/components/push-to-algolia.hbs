@@ -19,6 +19,13 @@
             Push Data
           {{/if}}
         {{/paper-button}}
+        {{#paper-button onClick='newTalks' disabled=pushingTalks}}
+          {{#if loadingResults}}
+            {{paper-progress-circular}}
+          {{else}}
+            Push recent talks
+          {{/if}}
+        {{/paper-button}}
         <!-- {{#paper-button onClick='getData' disabled=running}}
           {{#if running}}
             {{paper-progress-circular}}

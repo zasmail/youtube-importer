@@ -1,6 +1,6 @@
-class AlgoliaController < ApplicationController
-  def create(param='false')
-    PushToAlgoliaJob.perform_later()
+class TalksController < ApplicationController
+  def create()
+    PushTalksAlgoliaJob.perform_now()
     render json: {data: {
        type: "algolia",
        id: 999999999,
